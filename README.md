@@ -7,7 +7,7 @@ Provides a object-oriented public interface to reading configuration files, and 
 
 Currently only Yaml is included, and uses `Symfony\Yaml`.
 
-The service provides to ability to:
+The service provides the following:
 
 - **Required Keys.** An exception will be thrown if the configuration does not contain all the required keys.
 - **Environment Configuration.** The environment can either be parsed from a `global.yml` file under the `environment` key, or set at runtime via a simple setter. Other environments in the `required_environments` key have their configuration file ignored.
@@ -102,6 +102,6 @@ You can add your own config-loader classes by implementing `ConfigurationInterfa
 Additional Notes
 ====
 
-This class-set is *almost* like a service locator for your configuration, but not quite. It's just an object oriented way of passing around a configuration array of keys and values. If you have a large application, this probably isn't the best approach, but for small applications it isn't an issue calling `$this->config->getConfiguration("database");`.
+This class-set is *almost* like a service locator for your configuration, but not quite. It's just an object oriented way of passing around a configuration array of keys and values. If you have a large application then this probably isn't the best approach, but for small applications it isn't an issue calling `$this->config->getConfiguration("database");`.
 
-Depending on how you have set up your code, you could dependency inject specific configuration classes - but that is not the aim of the class.
+Depending on how you have set up your code, you could dependency inject specific configuration classes into your services - but that is not the aim of this class.
