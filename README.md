@@ -18,7 +18,7 @@ Installation
 Installation is via [Composer](http://getcomposer.org/). Add the following to your `composer.json` file:
 
     "require": {
-        "j7mbo/config-loader": "*" 
+        "j7mbo/config-loader": "dev-master" 
     }
 
 Usage
@@ -40,13 +40,14 @@ In the following code, we'll need to set the required (possible) environments to
     // bootstrap.php
     require_once __DIR__ . "/vendor/autoload.php"; // You'll need the composer autoloader included
     
-    $parser = new Symfony\Yaml\Yaml; // The Symfony YAML parser
+    $parser = new Symfony\Component\Yaml\Yaml; // The Symfony YAML parser
     $iteratorFactory = new ConfigLoader\FileSystemIteratorFactory; // Factory for a directory iterator
     $configLoader = new ConfigLoader\YamlConfigLoader($parser, $iteratorFactory);
     $configLoader->setEnvironment("dev");
     $configLoader->setPossibleEnvironments(["dev", "sandbox", "staging", "live"]);
     
-    // The above means that sandbox.yml, staging.yml and live.yml will be ignored, whilst dev.yml will be parsed. Usually, these files have identical keys, but different values (db settings etc)
+    // sandbox.yml, staging.yml and live.yml will be ignored, whilst dev.yml will be parsed
+    // Usually, these files have identical keys, but different values (db settings etc)
     
     try
     {
@@ -56,6 +57,7 @@ In the following code, we'll need to set the required (possible) environments to
     }
     catch (ConfigLoader\Exception\InvalidDirectoryException $e)
     {
+        echo "You have a permissions exception, or the directory doesn't exist";
         // The config directory doesn't exist or isn't readable
         // Log the error message
         // Show a nice message to the user
