@@ -272,12 +272,7 @@ class YamlConfigLoaderTest extends PHPUnit_Framework_TestCase
         $this->configLoader->load();
         $this->assertTrue($this->configLoader->getConfig() === $this->configLoader->getConfiguration());
     }
-    
-    public function testTravisFailsThis()
-    {
-        $this->assertTrue(false);
-    }
- 
+
     public static function tearDownAfterClass()
     {   
         /** Delete global.yml file **/
