@@ -3,6 +3,8 @@ config-loader
 
 Provides a object-oriented public interface to reading configuration files, and an object to Dependency Inject around your application to retrieve configuration values when you need them.
 
+![Test Status](https://api.travis-ci.org/J7mbo/config-loader.png)
+
 Currently only Yaml is included, and uses `Symfony\Yaml`.
 
 The service provides to ability to:
