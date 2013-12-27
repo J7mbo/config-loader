@@ -1,0 +1,28 @@
+{
+    "name": "j7mbo/config-loader",
+    "type": "application",
+    "description": "Awesomeness.",
+    "keywords": ["config","php", "loader", "yaml", "parser"],
+    "homepage": "http://github.com/j7mbo/config-loader",
+    "license": "WTFPL (Do What The Fuck You Want To Public License)",
+    "authors": [
+        {
+            "name": "James Mallison",
+            "email": "me@j7mbo.co.uk",
+            "homepage": "http://j7mbo.co.uk",
+            "role": "Author, Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "ConfigLoader": "src/"
+        }
+    },
+    "require": { 
+        "php": ">=5.4.0",
+        "symfony/yaml": "~2.3" 
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
