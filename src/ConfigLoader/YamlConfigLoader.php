@@ -105,9 +105,9 @@ class YamlConfigLoader implements ConfigurationInterface
      */
     public function setDirectory($directory)
     {
-        if (!is_dir($directory) || !is_writeable($directory))
+        if (!is_dir($directory) || !is_readable($directory))
         {
-            throw new InvalidDirectoryException(sprintf("Unable to find / write to directory: %s. Please check your f/s permissions.", $directory));
+            throw new InvalidDirectoryException(sprintf("Unable to find / read from directory: %s. Please check your f/s permissions.", $directory));
         }
         
         $this->directory = $directory;
@@ -120,9 +120,9 @@ class YamlConfigLoader implements ConfigurationInterface
      */
     public function getDirectory()
     {
-        if (!is_dir($this->directory) || !is_writeable($this->directory))
+        if (!is_dir($this->directory) || !is_readable($this->directory))
         {
-            throw new InvalidDirectoryException(sprintf("Unable to find / write to directory: %s. Please check your f/s permissions.", $this->directory));
+            throw new InvalidDirectoryException(sprintf("Unable to find / read from directory: %s. Please check your f/s permissions.", $this->directory));
         }
         
         return $this->directory;
@@ -188,7 +188,7 @@ class YamlConfigLoader implements ConfigurationInterface
         
         if (is_null($this->getEnvironment()) || is_null($this->getPossibleEnvironments()))
         {
-            if (is_file($requiredFile) && is_writable($requiredFile))
+            if (is_file($requiredFile) && is_readable($requiredFile))
             {
                 $global = $this->parser->parse($requiredFile);
                 
